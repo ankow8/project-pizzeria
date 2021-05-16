@@ -126,7 +126,7 @@
     initData: function(){
       const thisApp = this;
 
-      thisApp.data = dataSource; // czym tutaj jest ".data"?
+      thisApp.data = dataSource; // czym tutaj jest data?
     },
 
     init: function(){
