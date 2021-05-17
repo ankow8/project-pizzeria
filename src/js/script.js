@@ -95,6 +95,7 @@
       //console.log(thisProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       //console.log(thisProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
     initAccordion(){
@@ -175,22 +176,38 @@
           const option = param.options[optionId];
           //console.log(optionId, option);
 
-          // [NEW] check if there is param with a name of paramId in formData and if it includes optionId
-          if (formData[paramId] && formData[paramId].includes(optionId)) {
+          // [NEW] set a const with a name of paramId in formData and if it includes optionId
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
 
-            // [NEW] check if the option is not default
+          // [NEW] Add selective images
+          const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          console.log('optionImage: ', optionImage);
+
+          if(optionImage){
+            if(optionSelected){
+              optionImage.classList.add('active');
+            }
+            else {
+              optionImage.classList.remove('active');
+            }
+          }
+
+          // [DONE] check if there is param with a name of paramId in formData and if it includes optionId
+          if (optionSelected) {
+
+            // [DONE] check if the option is not default
             if (option.hasOwnProperty('default') != true){
 
-              // [NEW] add option price to price variable
+              // [DONE] add option price to price variable
               price += option.price;
 
             }
           } else {
 
-            // [NEW] check if the option is default
+            // [DONE] check if the option is default
             if(option.hasOwnProperty('default') == true){
 
-              // [NEW] reduce price variable
+              // [DONE] reduce price variable
               price -= option.price;
 
             }
@@ -227,7 +244,7 @@
       //console.log('*** App starting ***');
       //console.log('thisApp:', thisApp);
       //console.log('classNames:', classNames);
-      //console.log('settings:', settings);
+      console.log('settings:', settings);
       //console.log('templates:', templates);
 
       thisApp.initData();
