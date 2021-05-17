@@ -307,12 +307,12 @@
 
       thisWidget.linkDecrease.addEventListener('click', function(){
         event.preventDefault();
-        thisWidget.setValue(thisWidget.value - 1);
+        thisWidget.setValue(thisWidget.value -= 1);
       });
 
       thisWidget.linkIncrease.addEventListener('click', function(){
         event.preventDefault();
-        thisWidget.setValue(thisWidget.value + 1);
+        thisWidget.setValue(thisWidget.value += 1);
       });
     }
 
