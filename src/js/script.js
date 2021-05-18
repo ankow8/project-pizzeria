@@ -128,11 +128,17 @@
       //console.log(thisProduct.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       //console.log(thisProduct.cartButton);
-      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      //thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       //console.log(thisProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
-      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
-      console.log(thisProduct.amountWidgetElem);
+      //thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
+      //console.log(thisProduct.amountWidgetElem);
+      thisProduct.dom = {
+        amountWidgetElem: thisProduct.element.querySelector(select.menuProduct.amountWidget),
+        //console.log(thisProduct.amountWidgetElem);
+        priceElem: thisProduct.element.querySelector(select.menuProduct.priceElem),
+        //console.log(thisProduct.priceElem);
+      };
     }
 
 
@@ -258,14 +264,14 @@
       price *= thisProduct.amountWidget.value;
 
       // update calculated price in the html
-      thisProduct.priceElem.innerHTML = price;
+      thisProduct.dom.priceElem.innerHTML = price;
     }
 
     initAmountWidget(){
       const thisProduct = this;
 
-      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-      thisProduct.amountWidgetElem.addEventListener('updated', function(){
+      thisProduct.amountWidget = new AmountWidget(thisProduct.dom.amountWidgetElem);
+      thisProduct.dom.amountWidgetElem.addEventListener('updated', function(){
         thisProduct.processOrder();
       });
     }
@@ -336,6 +342,26 @@
       thisWidget.element.dispatchEvent(event);
     }
 
+  }
+
+  class Cart {
+    constructor(element){
+      const thiscart = this;
+
+      thisCart.products = [];
+
+      thisCart.getElements(element);
+
+      console.log('newCart: ', thisCart);
+    }
+
+    getElements(element){
+      const thisCart = this;
+
+      thisCart.dom = {};
+
+      thisCart.dom.wrapper = element;
+    }
   }
 
   const app = {
