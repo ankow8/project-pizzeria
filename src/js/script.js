@@ -141,8 +141,6 @@
       };
     }
 
-
-
     initAccordion(){
       const thisProduct = this;
 
@@ -192,6 +190,7 @@
       thisProduct.cartButton.addEventListener('click', function(event){
         event.preventDefault();
         thisProduct.processOrder();
+        thisProduct.addToCart();
       });
 
     }
@@ -226,7 +225,7 @@
 
           // [NEW] Add selective images
           const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
-          console.log('optionImage: ', optionImage);
+          //console.log('optionImage: ', optionImage);
 
           if(optionImage){
             if(optionSelected){
@@ -263,6 +262,9 @@
       // multiply price by amount
       price *= thisProduct.amountWidget.value;
 
+      thisProduct.priceSingle = price;
+      console.log('thisProduct.priceSingle: ', thisProduct);
+
       // update calculated price in the html
       thisProduct.dom.priceElem.innerHTML = price;
     }
@@ -276,14 +278,34 @@
       });
     }
 
+    addToCart(){
+      const thisProduct = this;
+
+      app.cart.add(thisProduct.prepareCartProduct());
+    }
+
+    prepareCartProduct(){
+      const thisProduct = this;
+      const productSummary = {
+        id: thisProduct.id,
+        name: thisProduct.data.name,       // do przekminienia jak to rozpisac
+        amount: thisProduct.amountWidget.value,
+        priceSingle: thisProduct.priceSingle,
+        price: thisProduct.priceSingle * thisProduct.amountWidget.value,
+        params: {},
+      };
+      return productSummary;
+      //console.log('productSummary: ', productSummary);
+    }
+
   }
 
   class AmountWidget {
     constructor(element){
       const thisWidget = this;
 
-      console.log('AmountWidget: ', thisWidget);
-      console.log('constructor arguments: ', element);
+      //console.log('AmountWidget: ', thisWidget);
+      //console.log('constructor arguments: ', element);
 
       thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.getElements(element);
@@ -367,6 +389,12 @@
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
     }
+
+    add(menuProduct){
+      //const thisCart = this;
+
+      console.log('adding product', menuProduct);
+    }
   }
 
   const app = {
@@ -399,7 +427,7 @@
       //console.log('*** App starting ***');
       //console.log('thisApp:', thisApp);
       //console.log('classNames:', classNames);
-      console.log('settings:', settings);
+      //console.log('settings:', settings);
       //console.log('templates:', templates);
 
       thisApp.initData();
