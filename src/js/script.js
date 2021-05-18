@@ -292,12 +292,47 @@
         amount: thisProduct.amountWidget.value,
         priceSingle: thisProduct.priceSingle,
         price: thisProduct.priceSingle * thisProduct.amountWidget.value,
-        params: {},
+        params: thisProduct.prepareCartProductParams()
       };
       return productSummary;
       //console.log('productSummary: ', productSummary);
     }
 
+    prepareCartProductParams(){
+      const thisProduct = this;
+      const params = {};
+      // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
+      const formData = utils.serializeFormToObject(thisProduct.form);
+
+      // for every category (param)...
+      for(let paramId in thisProduct.data.params){
+
+        // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
+        const param = thisProduct.data.params[paramId];
+
+        // [NEW] create category param in params const eg. params = { ingredients: { name: 'Ingredients', options: {}}}
+        params[paramId] = {
+          label: param.label,
+          options: {}
+        };
+
+        // for every option in this category
+        for(let optionId in param.options){
+
+          // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+          const option = param.options[optionId];
+
+          // Set a const with a name of paramId in formData and if it includes optionId
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+
+          // Check if there is param with a name of paramId in formData and if it includes optionId
+          if (optionSelected) {
+            // Option is selected!
+            params[paramId].options[optionId] = option.label;
+          }
+        }
+      } return params;
+    }
   }
 
   class AmountWidget {
@@ -381,6 +416,7 @@
       thisCart.dom = {};
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = document.querySelector(select.cart.productList);
     }
 
     initActions(){
@@ -391,9 +427,20 @@
     }
 
     add(menuProduct){
-      //const thisCart = this;
-
+      const thisCart = this;
       console.log('adding product', menuProduct);
+
+      /* generate HTML based on template */
+      const generatedHTML = templates.cartProduct(menuProduct);
+      //console.log(generatedHTML);
+
+      /* create element using utils.createElementFromHTML */
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+
+      /* add element to thisCart.dom.productList */
+      thisCart.dom.productList.appendChild(generatedDOM);
+
+
     }
   }
 
