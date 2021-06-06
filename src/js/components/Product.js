@@ -1,6 +1,6 @@
 import {select, classNames, templates} from './settings.js';
 import utils from './utils.js';
-import AmountWidget from './components/AmountWidget.js';
+import AmountWidget from './components/AmountWidget.js'; // trzeba bylo usunac wedlug konsoli folder components, ale dziala to lancuchowo na kolejne bledy. Prawdopodobnie gdzies w kodzie importu jest odnosnik odnosnika.
 
 class Product {
   constructor(id, data) {
