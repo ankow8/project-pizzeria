@@ -201,7 +201,7 @@ class Product {
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
       detail: {
-        product: thisProduct, //w tym miejscu nie wyswietla ceny i ilosci po dodaniu do karty
+        product: thisProduct.prepareCartProduct(), //w tym miejscu nie wyswietla ceny i ilosci po dodaniu do karty
       },
     });
     thisProduct.element.dispatchEvent(event);
