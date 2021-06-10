@@ -175,11 +175,11 @@ class Product {
       }
     }
 
-    // multiply price by amount
-    price *= thisProduct.amountWidget.value;
-
     thisProduct.priceSingle = price;
     //console.log('thisProduct.priceSingle: ', thisProduct);
+
+    // multiply price by amount
+    price *= thisProduct.amountWidget.value;
 
     // update calculated price in the html
     thisProduct.dom.priceElem.innerHTML = price;
