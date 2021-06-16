@@ -12,12 +12,9 @@ class Booking {
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
+    thisBooking.initBooking();
+    thisBooking.tableSelect = [];
   }
-
-  /*getElements(element){
-    const thisBooking = this;
-
-  }*/
 
   getData(){
     const thisBooking = this;
@@ -171,6 +168,7 @@ class Booking {
     thisBooking.dom.datePicker = document.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = document.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.bookingForm = thisBooking.dom.wrapper.querySelector(select.booking.bookingForm);
   }
 
   initWidgets(){
@@ -191,7 +189,47 @@ class Booking {
 
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
+      thisBooking.removeSelectTable();
     });
+
+    /*thisBooking.dom.bookingForm.addEventListener('click', function(event){
+      event.preventDefault();
+      //thisBooking.initBooking();
+    });*/
+  }
+
+  initBooking(){
+    const thisBooking = this;
+
+    for(let table of thisBooking.dom.tables){
+      table.addEventListener('click', function(event){
+        event.preventDefault();
+
+        if(table.classList.contains(classNames.booking.tableBooked)){
+          alert('This table is booked.');
+        } else {
+          const tableId = table.getAttribute(settings.booking.tableIdAttribute);
+          console.log(tableId);
+
+          if(table.classList.contains(classNames.booking.tableSelected)){
+            thisBooking.removeSelectTable();
+          } else {
+            thisBooking.removeSelectTable();
+            table.classList.add(classNames.booking.tableSelected);
+            thisBooking.tableSelect = tableId;
+          }
+        }
+      });
+    }
+  }
+
+  removeSelectTable(){
+    const thisBooking = this;
+    const selectTable = document.querySelectorAll(select.booking.selected);
+    for(let select of selectTable){
+      select.classList.remove(classNames.booking.tableSelected);
+      thisBooking.tableSelect = [];
+    }
   }
 }
 
