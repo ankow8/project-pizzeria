@@ -25,7 +25,7 @@ export const select = {
   },
   widgets: {
     amount: {
-      input: 'input.amount', // CODE CHANGED
+      input: 'input.amount',
       linkDecrease: 'a[href="#less"]',
       linkIncrease: 'a[href="#more"]',
     },
@@ -63,6 +63,7 @@ export const select = {
     tables: '.floor-plan .table',
     bookingForm: '.booking-form',
     selected: '.selected',
+    starter: '[name="starter"]',
   },
   nav: {
     links: '.main-nav a',
