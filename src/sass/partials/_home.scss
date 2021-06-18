@@ -1,6 +1,90 @@
 .home-wrapper {
   margin: ($base-size * 3.5) auto;
-  padding: ($base-size * 6) ($base-size * 4);
+  padding: $base-size $base-size;
   background: $color-light;
   border-radius: $radius;
+}
+
+.services {
+  padding-bottom: 100px;
+  margin-top: 0;
+  padding-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  .box {
+    height: 120px;
+    border-radius: $radius;
+    margin: 3px;
+    .service-name, p {
+      font-family: $font-header;
+      text-align: center;
+      color: $color-light;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin-top: 40px;
+    }
+    .hour {
+      margin-top: 20px;
+    }
+    p {
+      font-family: $font-text;
+    }
+  }
+  .order{
+    background-image: url(/images/home/pizza-1.jpg);
+    background-size: cover;
+    background-position: center center;
+    flex: 45%;
+  }
+  .table {
+    background-image: url(/images/home/pizza-2.jpg);
+    background-size: cover;
+    background-position: center center;
+    flex: 45%;
+  }
+  .open {
+    background-color: $color-main;
+    background-size: cover;
+    background-position: center center;
+    flex: 100%;
+  }
+}
+
+.main-carousel {
+  margin-bottom: 100px;
+  margin-left: 5px;
+  margin-right: 5px;
+  .carousel-cell {
+    display: flex;
+    width: 100%;
+    height: 220px;
+    .carousel-image img {
+        width: 193px;
+        height: 193px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: 16px;
+    }
+    .carousel-text p:nth-child(3) {
+      font-style: italic;
+    }
+  }
+}
+
+.insta-gallery {
+  .photo-set {
+    display: flex;
+    flex-wrap: wrap;
+    img {
+      width: 193px;
+      height: 193px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin: 5px;
+    }
+  }
+  p {
+    margin-left: 5px;
+  }
 }
