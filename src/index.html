@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="vendor/flickity.css" media="screen">
@@ -77,14 +77,18 @@
 
     <script id="template-home-widget" type="text/x-handlebars-template">
       <div class="home-wrapper container">
-        <div class="services container">
-          <div class="box order">
-            <h2 class="service-name">Order online</h3>
+        <div class="services">
+          <div class="service-order">
+            <a href="#/order">
+              <h2 class="service-name">Order online</h3>
+            </a>
           </div>
-          <div class="box table">
-            <h2 class="service-name">Book a table</h3>
+          <div class="service-table">
+            <a href="#/booking">
+              <h2 class="service-name">Book a table</h3>
+            </a>
           </div>
-          <div class="box open">
+          <div class="service-open">
             <h2 class="service-name hour">Opening hours:</h3>
             <p>Tue-Sun, 12PM-12AM</p>
           </div>
@@ -133,12 +137,48 @@
         </div>
         <section class="insta-gallery container">
           <div class="photo-set">
-            <img class="insta-photo" src="images/home/pizza-4.jpg"></img>
-            <img class="insta-photo" src="images/home/pizza-5.jpg"></img>
-            <img class="insta-photo" src="images/home/pizza-6.jpg"></img>
-            <img class="insta-photo" src="images/home/pizza-7.jpg"></img>
-            <img class="insta-photo" src="images/home/pizza-8.jpg"></img>
-            <img class="insta-photo" src="images/home/pizza-9.jpg"></img>
+            <div class="insta-box">
+              <div class="ico">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-share-alt"></i></a>
+              </div>
+              <img class="insta-photo" src="images/home/pizza-4.jpg"></img>
+            </div>
+            <div class="insta-box">
+              <div class="ico">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-share-alt"></i></a>
+              </div>
+              <img class="insta-photo" src="images/home/pizza-5.jpg"></img>
+            </div>
+            <div class="insta-box">
+              <div class="ico">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-share-alt"></i></a>
+              </div>
+              <img class="insta-photo" src="images/home/pizza-6.jpg"></img>
+            </div>
+            <div class="insta-box">
+              <div class="ico">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-share-alt"></i></a>
+              </div>
+              <img class="insta-photo" src="images/home/pizza-7.jpg"></img>
+            </div>
+            <div class="insta-box">
+              <div class="ico">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-share-alt"></i></a>
+              </div>
+              <img class="insta-photo" src="images/home/pizza-8.jpg"></img>
+            </div>
+            <div class="insta-box">
+              <div class="ico">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-share-alt"></i></a>
+              </div>
+              <img class="insta-photo" src="images/home/pizza-9.jpg"></img>
+            </div>
           </div>
           <p>View more on Instagram</p>
         </section>
