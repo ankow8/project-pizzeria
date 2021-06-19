@@ -96,59 +96,59 @@
   }
 }
 
-.insta-gallery {
-  .photo-set {
-    display: flex;
-    flex-wrap: wrap;
+.photo-set {
+  display: flex;
+  flex-wrap: wrap;
 
-    .insta-box {
-      flex: 33%;
-      margin: 0;
-      padding: 3px;
-      //border: 1px solid;
-      position: relative;
+  .insta-box {
+    flex: 33%;
+    margin: 0;
+    padding: 3px;
+    //border: 1px solid;
+    position: relative;
 
-      img {
-        width: 193px;
-        height: 193px;
-        object-fit: cover;
-        border-radius: 5px;
-        top: 50%;
-        left: 50%;
-      }
+    img {
+      width: 193px;
+      height: 193px;
+      object-fit: cover;
+      border-radius: 5px;
+      top: 50%;
+      left: 50%;
+    }
 
-      .ico {
-        position: absolute;
-        margin: 0 auto;
-        top: 40%;
-        left: 40%;
+    .ico {
+      position: absolute;
+      margin: 0 auto;
+      top: 40%;
+      left: 40%;
+    }
 
-        a {
-          text-decoration: none;
-
-          i {
-            font-size: 24px;
-            color: $color-dark;
-            opacity: 0;
-            margin-right: 4px;
-          }
-          &:hover {
-            i {
-              color: $color-main;
-              transition: $transition;
-              opacity: 1;
-            }
-          }
-        }
-      }
-      &:hover {
-        opacity: 0.85;
-        transition: $transition;
-      }
+    &:hover {
+      opacity: 0.85;
+      transition: $transition;
     }
   }
+}
 
-  p {
-    margin-left: 5px;
+.insta-gallery p {
+  margin-left: 5px;
+}
+
+.ico npmra {
+  text-decoration: none;
+
+  i {
+    font-size: 24px;
+    color: $color-dark;
+    opacity: 0;
+    margin-right: 4px;
+  }
+
+  &:hover {
+    i {
+      color: $color-main;
+      transition: $transition;
+      opacity: 1;
+    }
   }
 }
